@@ -1,8 +1,56 @@
-- name: Auto-login and get access token
+name: Run Stock Screener
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 3 * * 1-5'
+
+jobs:
+  run-screener:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install kiteconnect pandas ta pyotp playwright
+          playwright install --with-deps chromium
+
+     - name: Auto-login and get access token
         env:
           KITE_API_KEY: ${{ secrets.KITE_API_KEY }}
           KITE_API_SECRET: ${{ secrets.KITE_API_SECRET }}
           KITE_USER_ID: ${{ secrets.KITE_USER_ID }}
           KITE_PASSWORD: ${{ secrets.KITE_PASSWORD }}
           KITE_TOTP_SECRET: ${{ secrets.KITE_TOTP_SECRET }}
-        run: python auto_login.py >> $GITHUB_ENV
+        run: python auto_login.py | tee auto_login_output.log | grep "^ACCESS_TOKEN=" >> $GITHUB_ENV
+
+      - name: Upload debug screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots
+          path: |
+            debug_*.png
+            debug_page_content.html
+          if-no-files-found: ignore
+
+      - name: Run screener script
+        env:
+          KITE_API_KEY: ${{ secrets.KITE_API_KEY }}
+          KITE_API_SECRET: ${{ secrets.KITE_API_SECRET }}
+        run: python screener.py
+
+      - name: Commit updated results.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add results.json
+          git commit -m "Update results.json" || echo "No changes to commit"
+          git push
