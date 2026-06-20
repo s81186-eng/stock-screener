@@ -1,6 +1,5 @@
 import os
 import re
-import time
 import pyotp
 from playwright.sync_api import sync_playwright
 from kiteconnect import KiteConnect
@@ -20,21 +19,48 @@ def get_access_token():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(login_url, wait_until="networkidle")
+        page.screenshot(path="debug_1_initial.png")
+        print("URL after goto:", page.url)
 
         # Step 1: user id + password
         page.fill("#userid", KITE_USER_ID)
         page.fill("#password", KITE_PASSWORD)
+        page.screenshot(path="debug_2_filled.png")
         page.click("button[type='submit']")
+        page.wait_for_timeout(3000)
+        page.screenshot(path="debug_3_after_submit.png")
+        print("URL after step 1 submit:", page.url)
 
         # Step 2: TOTP
-        page.wait_for_selector("input[type='number'], input[type='text']", timeout=15000)
         totp_code = pyotp.TOTP(KITE_TOTP_SECRET).now()
-        totp_inputs = page.query_selector_all("input[type='number'], input[type='text']")
-        # Use the last visible numeric/text input on the page as the TOTP field
-        totp_inputs[-1].fill(totp_code)
+        print("Generated TOTP:", totp_code)
 
-        # Wait for redirect to our site with request_token in the URL
-        page.wait_for_url(re.compile(r"request_token="), timeout=20000)
+        all_inputs = page.query_selector_all("input")
+        print(f"Found {len(all_inputs)} input fields on TOTP page")
+        for i, inp in enumerate(all_inputs):
+            try:
+                print(f"  input[{i}]: type={inp.get_attribute('type')} id={inp.get_attribute('id')} name={inp.get_attribute('name')} placeholder={inp.get_attribute('placeholder')}")
+            except Exception:
+                pass
+
+        if all_inputs:
+            all_inputs[-1].fill(totp_code)
+            page.screenshot(path="debug_4_totp_filled.png")
+            page.wait_for_timeout(2000)
+
+        print("URL before final wait:", page.url)
+        page.screenshot(path="debug_5_before_wait.png")
+
+        try:
+            page.wait_for_url(re.compile(r"request_token="), timeout=15000)
+        except Exception as e:
+            page.screenshot(path="debug_6_timeout.png")
+            with open("debug_page_content.html", "w") as f:
+                f.write(page.content())
+            print("FAILED waiting for request_token. Final URL was:", page.url)
+            browser.close()
+            raise e
+
         final_url = page.url
         browser.close()
 
