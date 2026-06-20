@@ -19,37 +19,46 @@ def get_access_token():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(login_url, wait_until="networkidle")
-        page.screenshot(path="debug_1_initial.png")
-        print("URL after goto:", page.url)
 
-        # Step 1: user id + password
-        page.fill("#userid", KITE_USER_ID)
-        page.fill("#password", KITE_PASSWORD)
+        # Step 1: user id + password, targeted by placeholder text
+        userid_field = page.get_by_placeholder(re.compile("User ID|Phone", re.IGNORECASE))
+        password_field = page.get_by_placeholder(re.compile("Password", re.IGNORECASE))
+
+        userid_field.fill(KITE_USER_ID)
+        password_field.fill(KITE_PASSWORD)
         page.screenshot(path="debug_2_filled.png")
-        page.click("button[type='submit']")
+
+        page.click("button:has-text('Login')")
         page.wait_for_timeout(3000)
         page.screenshot(path="debug_3_after_submit.png")
         print("URL after step 1 submit:", page.url)
 
-        # Step 2: TOTP
+        # Step 2: TOTP page — find any visible empty text/number input
+        page.wait_for_timeout(1500)
+        all_inputs = page.query_selector_all("input")
+        print(f"Found {len(all_inputs)} input fields on this page")
+
+        totp_field = None
+        for inp in all_inputs:
+            input_type = (inp.get_attribute("type") or "").lower()
+            if input_type in ("text", "number", "tel", "password") and inp.is_visible():
+                placeholder = (inp.get_attribute("placeholder") or "")
+                print(f"  candidate input: type={input_type} placeholder={placeholder}")
+                totp_field = inp  # keep last matching visible candidate
+
+        if totp_field is None:
+            page.screenshot(path="debug_4_no_totp_field.png")
+            with open("debug_page_content.html", "w") as f:
+                f.write(page.content())
+            raise Exception("Could not find a TOTP input field. See debug_4 screenshot.")
+
         totp_code = pyotp.TOTP(KITE_TOTP_SECRET).now()
         print("Generated TOTP:", totp_code)
-
-        all_inputs = page.query_selector_all("input")
-        print(f"Found {len(all_inputs)} input fields on TOTP page")
-        for i, inp in enumerate(all_inputs):
-            try:
-                print(f"  input[{i}]: type={inp.get_attribute('type')} id={inp.get_attribute('id')} name={inp.get_attribute('name')} placeholder={inp.get_attribute('placeholder')}")
-            except Exception:
-                pass
-
-        if all_inputs:
-            all_inputs[-1].fill(totp_code)
-            page.screenshot(path="debug_4_totp_filled.png")
-            page.wait_for_timeout(2000)
+        totp_field.fill(totp_code)
+        page.screenshot(path="debug_5_totp_filled.png")
+        page.wait_for_timeout(2000)
 
         print("URL before final wait:", page.url)
-        page.screenshot(path="debug_5_before_wait.png")
 
         try:
             page.wait_for_url(re.compile(r"request_token="), timeout=15000)
