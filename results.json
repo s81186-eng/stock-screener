@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-06-20T08:30:00+05:30",
+  "stocks": [
+    {
+      "symbol": "RELIANCE",
+      "exchange": "NSE",
+      "ltp": 2934.50,
+      "score": 87.5,
+      "rank": 1,
+      "reasons": [
+        "Bullish engulfing on daily candle",
+        "Price above EMA50 and EMA200",
+        "OBV rising while price consolidates (accumulation)"
+      ]
+    },
+    {
+      "symbol": "TCS",
+      "exchange": "NSE",
+      "ltp": 3850.10,
+      "score": 81.2,
+      "rank": 2,
+      "reasons": [
+        "Hammer candle near support",
+        "RSI rebounding from oversold"
+      ]
+    },
+    {
+      "symbol": "INFY",
+      "exchange": "NSE",
+      "ltp": 1567.25,
+      "score": 76.8,
+      "rank": 3,
+      "reasons": [
+        "MACD bullish crossover",
+        "Volume spike 2.3x average on up day"
+      ]
+    }
+  ]
+}
