@@ -11,6 +11,19 @@ KITE_PASSWORD = os.environ["KITE_PASSWORD"]
 KITE_TOTP_SECRET = os.environ["KITE_TOTP_SECRET"]
 
 
+def set_value_js(page, selector, value):
+    page.eval_on_selector(
+        selector,
+        """(el, value) => {
+            const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+            setter.call(el, value);
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+        }""",
+        value,
+    )
+
+
 def get_access_token():
     kite = KiteConnect(api_key=KITE_API_KEY)
     login_url = kite.login_url()
@@ -19,21 +32,16 @@ def get_access_token():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(login_url, wait_until="networkidle")
-        page.wait_for_timeout(1500)
+        page.wait_for_selector("#userid", timeout=15000)
+        page.wait_for_timeout(1000)
 
-        # Step 1: type userid character-by-character (simulates real keystrokes)
-        userid_locator = page.locator('input:not([type="password"]):not([type="checkbox"])').first
-        password_locator = page.locator('input[type="password"]').first
-
-        userid_locator.click()
-        userid_locator.press_sequentially(KITE_USER_ID, delay=80)
+        # Step 1: set userid + password directly via JS (bypasses flaky Vue input handling)
+        set_value_js(page, "#userid", KITE_USER_ID)
+        set_value_js(page, "#password", KITE_PASSWORD)
         page.wait_for_timeout(300)
-        print("userid field value now:", userid_locator.input_value())
 
-        password_locator.click()
-        password_locator.press_sequentially(KITE_PASSWORD, delay=80)
-        page.wait_for_timeout(300)
-        print("password field length now:", len(password_locator.input_value()))
+        print("userid field value now:", page.eval_on_selector("#userid", "el => el.value"))
+        print("password field length now:", len(page.eval_on_selector("#password", "el => el.value")))
 
         page.screenshot(path="debug_2_filled.png")
 
@@ -42,17 +50,39 @@ def get_access_token():
         page.screenshot(path="debug_3_after_submit.png")
         print("URL after step 1 submit:", page.url)
 
-        # Step 2: TOTP page
+        # Step 2: TOTP page — find the visible non-checkbox input and fill it the same way
         page.wait_for_timeout(1500)
-        totp_locator = page.locator('input:not([type="checkbox"])').first
+        visible_inputs = [inp for inp in page.query_selector_all("input") if inp.is_visible()]
+        totp_input = None
+        for inp in visible_inputs:
+            if (inp.get_attribute("type") or "text").lower() != "checkbox":
+                totp_input = inp
+
+        if totp_input is None:
+            page.screenshot(path="debug_4_no_totp_field.png")
+            with open("debug_page_content.html", "w") as f:
+                f.write(page.content())
+            raise Exception("Could not find a TOTP input field")
+
         totp_code = pyotp.TOTP(KITE_TOTP_SECRET).now()
         print("Generated TOTP:", totp_code)
 
-        totp_locator.click()
-        totp_locator.press_sequentially(totp_code, delay=80)
-        page.wait_for_timeout(300)
-        print("totp field value now:", totp_locator.input_value())
+        totp_id = totp_input.get_attribute("id")
+        if totp_id:
+            set_value_js(page, f"#{totp_id}", totp_code)
+        else:
+            totp_input.evaluate(
+                """(el, value) => {
+                    const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+                    setter.call(el, value);
+                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                    el.dispatchEvent(new Event('change', { bubbles: true }));
+                }""",
+                totp_code,
+            )
 
+        page.wait_for_timeout(300)
+        print("totp field value now:", totp_input.input_value())
         page.screenshot(path="debug_5_totp_filled.png")
         page.wait_for_timeout(2000)
 
