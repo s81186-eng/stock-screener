@@ -3,7 +3,7 @@ name: Run Stock Screener
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 3 * * 1-5'   # 9:00 AM IST, Mon-Fri (cron runs in UTC)
+    - cron: '30 3 * * 1-5'
 
 jobs:
   run-screener:
@@ -30,6 +30,16 @@ jobs:
           KITE_PASSWORD: ${{ secrets.KITE_PASSWORD }}
           KITE_TOTP_SECRET: ${{ secrets.KITE_TOTP_SECRET }}
         run: python auto_login.py >> $GITHUB_ENV
+
+      - name: Upload debug screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots
+          path: |
+            debug_*.png
+            debug_page_content.html
+          if-no-files-found: ignore
 
       - name: Run screener script
         env:
