@@ -1,501 +1,1360 @@
 {
-  "generated_at": "2026-06-20T07:32:17.778271",
-  "stocks": [
+  "generated_at": "2026-06-20T10:30:14.905378",
+  "data_as_of": "2026-06-19T00:00:00+05:30",
+  "universe_size": 2867,
+  "penny_threshold": 50,
+  "nifty500_stocks": [
     {
-      "symbol": "NESTLEIND",
+      "symbol": "RATNAMANI",
       "exchange": "NSE",
-      "ltp": 1414.8,
-      "score": 42,
+      "ltp": 2770.9,
+      "score": 78,
+      "summary": "This stock shows a very strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Bullish engulfing pattern",
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (53)",
-        "OBV confirms upward price move"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (64)",
+        "Strong trend in place (ADX 26)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.3x average)"
       ],
       "category_scores": {
-        "pattern": 15,
-        "trend_momentum": 22,
-        "volume_smart_money": 5
+        "pattern": 40,
+        "trend_momentum": 23,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 1
     },
     {
-      "symbol": "BHARTIARTL",
+      "symbol": "SUVEN",
       "exchange": "NSE",
-      "ltp": 1910.8,
-      "score": 34,
+      "ltp": 268.2,
+      "score": 63,
+      "summary": "This stock shows a very strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Bullish engulfing pattern",
-        "Price above EMA50",
-        "RSI in healthy range (64)",
-        "OBV confirms upward price move"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (58)",
+        "Strong trend in place (ADX 28)",
+        "Quiet accumulation: OBV rising while price flat (smart-money buying)"
       ],
       "category_scores": {
-        "pattern": 15,
-        "trend_momentum": 14,
-        "volume_smart_money": 5
+        "pattern": 30,
+        "trend_momentum": 23,
+        "volume_smart_money": 10
       },
+      "is_penny": false,
       "rank": 2
     },
     {
-      "symbol": "TCS",
+      "symbol": "BLACKBUCK",
       "exchange": "NSE",
-      "ltp": 2125.0,
-      "score": 33,
+      "ltp": 574.05,
+      "score": 63,
+      "summary": "This stock shows a very strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "Hammer candle near recent support",
-        "RSI rebounding from oversold (36)",
-        "Unusual volume spike (2.5x average)"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "RSI in healthy range (65)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.3x average)"
       ],
       "category_scores": {
-        "pattern": 15,
+        "pattern": 40,
         "trend_momentum": 8,
-        "volume_smart_money": 10
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 3
     },
     {
-      "symbol": "ADANIPORTS",
+      "symbol": "EMCURE",
       "exchange": "NSE",
-      "ltp": 1835.3,
-      "score": 32,
+      "ltp": 1776.0,
+      "score": 61,
+      "summary": "This stock shows a very strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (61)",
-        "Unusual volume spike (2.1x average)"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (59)",
+        "MACD bullish crossover (momentum turning up)",
+        "Volume confirms upward price move"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
-        "volume_smart_money": 10
+        "pattern": 30,
+        "trend_momentum": 26,
+        "volume_smart_money": 5
       },
+      "is_penny": false,
       "rank": 4
     },
     {
-      "symbol": "ASIANPAINT",
+      "symbol": "JTLIND",
       "exchange": "NSE",
-      "ltp": 2732.9,
-      "score": 32,
+      "ltp": 79.23,
+      "score": 60,
+      "summary": "This stock shows a very strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (62)",
-        "Strong trend strength (ADX 36)",
-        "OBV confirms upward price move"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (64)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (7.1x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 27,
-        "volume_smart_money": 5
+        "pattern": 26,
+        "trend_momentum": 19,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 5
     },
     {
-      "symbol": "JSWSTEEL",
+      "symbol": "SPECIALITY",
       "exchange": "NSE",
-      "ltp": 1287.7,
-      "score": 32,
+      "ltp": 118.41,
+      "score": 60,
+      "summary": "This stock shows a very strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (52)",
-        "OBV rising while price flat/down (possible accumulation)"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "MACD bullish crossover (momentum turning up)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.2x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
-        "volume_smart_money": 10
+        "pattern": 24,
+        "trend_momentum": 21,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 6
     },
     {
-      "symbol": "TATASTEEL",
+      "symbol": "INDOCO",
       "exchange": "NSE",
-      "ltp": 198.96,
-      "score": 31,
+      "ltp": 234.99,
+      "score": 58,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend.",
       "reasons": [
-        "Hammer candle near recent support",
-        "Price above EMA200",
-        "RSI rebounding from oversold (40)"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (59)",
+        "Strong trend in place (ADX 28)",
+        "Volume confirms upward price move"
       ],
       "category_scores": {
-        "pattern": 15,
-        "trend_momentum": 16,
-        "volume_smart_money": 0
+        "pattern": 30,
+        "trend_momentum": 23,
+        "volume_smart_money": 5
       },
+      "is_penny": false,
       "rank": 7
     },
     {
-      "symbol": "SBIN",
+      "symbol": "ASTEC",
       "exchange": "NSE",
-      "ltp": 1035.1,
-      "score": 27,
+      "ltp": 797.7,
+      "score": 58,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (62)",
-        "OBV confirms upward price move"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (60)",
+        "Strong trend in place (ADX 42)",
+        "Volume confirms upward price move"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
+        "pattern": 30,
+        "trend_momentum": 23,
         "volume_smart_money": 5
       },
+      "is_penny": false,
       "rank": 8
     },
     {
-      "symbol": "AXISBANK",
+      "symbol": "TIIL",
       "exchange": "NSE",
-      "ltp": 1357.9,
-      "score": 27,
+      "ltp": 2616.7,
+      "score": 57,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (64)",
-        "OBV confirms upward price move"
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (61)",
+        "MACD bullish crossover (momentum turning up)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.3x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
-        "volume_smart_money": 5
+        "pattern": 16,
+        "trend_momentum": 26,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 9
     },
     {
-      "symbol": "KOTAKBANK",
+      "symbol": "EDELWEISS",
       "exchange": "NSE",
-      "ltp": 399.25,
-      "score": 27,
+      "ltp": 124.71,
+      "score": 57,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (59)",
-        "OBV confirms upward price move"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.8x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
-        "volume_smart_money": 5
+        "pattern": 28,
+        "trend_momentum": 14,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 10
     },
     {
-      "symbol": "BAJFINANCE",
+      "symbol": "TARIL",
       "exchange": "NSE",
-      "ltp": 961.8,
-      "score": 27,
+      "ltp": 357.55,
+      "score": 57,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (63)",
-        "OBV confirms upward price move"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (21.2x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
-        "volume_smart_money": 5
+        "pattern": 28,
+        "trend_momentum": 14,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 11
     },
     {
-      "symbol": "NTPC",
+      "symbol": "RBLBANK",
       "exchange": "NSE",
-      "ltp": 365.8,
-      "score": 27,
+      "ltp": 378.85,
+      "score": 57,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Price above EMA200",
-        "RSI in healthy range (46)",
-        "MACD bullish crossover",
-        "Strong trend strength (ADX 28)"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Strong trend in place (ADX 28)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.0x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 27,
-        "volume_smart_money": 0
+        "pattern": 24,
+        "trend_momentum": 18,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 12
     },
     {
-      "symbol": "TITAN",
+      "symbol": "PSPPROJECT",
       "exchange": "NSE",
-      "ltp": 4419.9,
-      "score": 27,
+      "ltp": 969.1,
+      "score": 57,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (63)",
-        "OBV confirms upward price move"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Strong trend in place (ADX 35)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.7x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
-        "volume_smart_money": 5
+        "pattern": 24,
+        "trend_momentum": 18,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 13
     },
     {
-      "symbol": "GRASIM",
+      "symbol": "EBGNG",
       "exchange": "NSE",
-      "ltp": 3149.5,
-      "score": 27,
+      "ltp": 501.95,
+      "score": 57,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (63)",
-        "OBV confirms upward price move"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.8x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
-        "volume_smart_money": 5
+        "pattern": 28,
+        "trend_momentum": 14,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 14
     },
     {
-      "symbol": "ADANIENT",
+      "symbol": "CRAFTSMAN",
       "exchange": "NSE",
-      "ltp": 3038.4,
-      "score": 26,
+      "ltp": 9806.5,
+      "score": 55,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "Strong trend strength (ADX 51)",
-        "OBV confirms upward price move"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Strong trend in place (ADX 43)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.4x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 21,
-        "volume_smart_money": 5
+        "pattern": 22,
+        "trend_momentum": 18,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 15
     },
     {
-      "symbol": "SUNPHARMA",
+      "symbol": "DCXINDIA",
       "exchange": "NSE",
-      "ltp": 1838.3,
-      "score": 22,
+      "ltp": 204.32,
+      "score": 55,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "RSI in healthy range (59)"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (58)",
+        "MACD bullish crossover (momentum turning up)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.6x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 22,
-        "volume_smart_money": 0
+        "pattern": 14,
+        "trend_momentum": 26,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 16
     },
     {
-      "symbol": "ICICIBANK",
+      "symbol": "SREEL",
       "exchange": "NSE",
-      "ltp": 1346.5,
-      "score": 21,
+      "ltp": 214.96,
+      "score": 55,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "OBV confirms upward price move"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI overbought (76) - pullback risk",
+        "Strong trend in place (ADX 43)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (14.8x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 16,
-        "volume_smart_money": 5
+        "pattern": 28,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 17
     },
     {
-      "symbol": "LT",
+      "symbol": "POLYPLEX",
       "exchange": "NSE",
-      "ltp": 4209.4,
-      "score": 21,
+      "ltp": 951.1,
+      "score": 54,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend.",
       "reasons": [
-        "Price above EMA50",
-        "Price above EMA200",
-        "OBV confirms upward price move"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (60)",
+        "Volume confirms upward price move"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 16,
+        "pattern": 30,
+        "trend_momentum": 19,
         "volume_smart_money": 5
       },
+      "is_penny": false,
       "rank": 18
     },
     {
-      "symbol": "ONGC",
+      "symbol": "BHARATGEAR",
       "exchange": "NSE",
-      "ltp": 246.25,
-      "score": 20,
+      "ltp": 137.05,
+      "score": 53,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "Hammer candle near recent support",
-        "Strong trend strength (ADX 38)"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.7x average)"
       ],
       "category_scores": {
-        "pattern": 15,
-        "trend_momentum": 5,
-        "volume_smart_money": 0
+        "pattern": 24,
+        "trend_momentum": 14,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 19
     },
     {
-      "symbol": "MARUTI",
+      "symbol": "SBFC",
       "exchange": "NSE",
-      "ltp": 13395.0,
-      "score": 19,
+      "ltp": 95.4,
+      "score": 53,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "Price above EMA50",
-        "RSI in healthy range (53)",
-        "OBV confirms upward price move"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "RSI in healthy range (59)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (4.3x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 14,
-        "volume_smart_money": 5
+        "pattern": 30,
+        "trend_momentum": 8,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 20
     },
     {
-      "symbol": "POWERGRID",
+      "symbol": "ROSSARI",
       "exchange": "NSE",
-      "ltp": 292.25,
-      "score": 19,
+      "ltp": 560.9,
+      "score": 53,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "Price above EMA200",
-        "RSI in healthy range (50)",
-        "OBV confirms upward price move"
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (65)",
+        "MACD bullish crossover (momentum turning up)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (7.7x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 14,
-        "volume_smart_money": 5
+        "pattern": 12,
+        "trend_momentum": 26,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 21
     },
     {
-      "symbol": "INFY",
+      "symbol": "JYOTICNC",
       "exchange": "NSE",
-      "ltp": 1051.4,
-      "score": 18,
+      "ltp": 737.95,
+      "score": 53,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "RSI rebounding from oversold (33)",
-        "Unusual volume spike (3.1x average)"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "RSI in healthy range (64)",
+        "Strong trend in place (ADX 28)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.5x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 8,
-        "volume_smart_money": 10
+        "pattern": 26,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 22
     },
     {
-      "symbol": "HCLTECH",
+      "symbol": "RCF",
       "exchange": "NSE",
-      "ltp": 1131.7,
-      "score": 16,
+      "ltp": 136.65,
+      "score": 51,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "RSI in healthy range (41)",
-        "Unusual volume spike (2.9x average)"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.1x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 6,
-        "volume_smart_money": 10
+        "pattern": 22,
+        "trend_momentum": 14,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 23
     },
     {
-      "symbol": "HDFCBANK",
+      "symbol": "RML",
       "exchange": "NSE",
-      "ltp": 779.8,
-      "score": 11,
+      "ltp": 1121.15,
+      "score": 51,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "RSI in healthy range (55)",
-        "OBV confirms upward price move"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI overbought (80) - pullback risk",
+        "Strong trend in place (ADX 39)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (69.7x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 6,
-        "volume_smart_money": 5
+        "pattern": 24,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 24
     },
     {
-      "symbol": "ITC",
+      "symbol": "ZYDUSWELL",
       "exchange": "NSE",
-      "ltp": 292.5,
-      "score": 11,
+      "ltp": 512.35,
+      "score": 51,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend.",
       "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
         "RSI in healthy range (55)",
-        "OBV confirms upward price move"
+        "MACD bullish crossover (momentum turning up)",
+        "Strong trend in place (ADX 29)",
+        "Volume confirms upward price move"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 6,
+        "pattern": 16,
+        "trend_momentum": 30,
         "volume_smart_money": 5
       },
+      "is_penny": false,
       "rank": 25
     },
     {
-      "symbol": "HINDUNILVR",
+      "symbol": "BAJAJHFL",
       "exchange": "NSE",
-      "ltp": 2194.6,
-      "score": 11,
+      "ltp": 88.36,
+      "score": 51,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "RSI in healthy range (52)",
-        "OBV confirms upward price move"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "RSI in healthy range (63)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (4.4x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 6,
-        "volume_smart_money": 5
+        "pattern": 28,
+        "trend_momentum": 8,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 26
     },
     {
-      "symbol": "WIPRO",
+      "symbol": "THELEELA",
       "exchange": "NSE",
-      "ltp": 180.8,
-      "score": 8,
+      "ltp": 494.2,
+      "score": 51,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
       "reasons": [
-        "RSI rebounding from oversold (36)"
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI overbought (79) - pullback risk",
+        "Strong trend in place (ADX 25)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (9.6x average)"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 8,
-        "volume_smart_money": 0
+        "pattern": 24,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
       },
+      "is_penny": false,
       "rank": 27
     },
     {
-      "symbol": "RELIANCE",
+      "symbol": "SONACOMS",
       "exchange": "NSE",
-      "ltp": 1309.5,
-      "score": 6,
+      "ltp": 613.8,
+      "score": 50,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend.",
       "reasons": [
-        "RSI in healthy range (46)"
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (60)",
+        "Volume confirms upward price move"
       ],
       "category_scores": {
-        "pattern": 0,
-        "trend_momentum": 6,
-        "volume_smart_money": 0
+        "pattern": 26,
+        "trend_momentum": 19,
+        "volume_smart_money": 5
       },
+      "is_penny": false,
       "rank": 28
     },
     {
-      "symbol": "ULTRACEMCO",
+      "symbol": "BHAGCHEM",
       "exchange": "NSE",
-      "ltp": 11367.0,
-      "score": 6,
+      "ltp": 279.26,
+      "score": 50,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
       "reasons": [
-        "RSI in healthy range (51)"
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (63)",
+        "Strong trend in place (ADX 28)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (43.2x average)"
+      ],
+      "category_scores": {
+        "pattern": 12,
+        "trend_momentum": 23,
+        "volume_smart_money": 15
+      },
+      "is_penny": false,
+      "rank": 29
+    },
+    {
+      "symbol": "EIEL",
+      "exchange": "NSE",
+      "ltp": 205.87,
+      "score": 50,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (61)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.2x average)"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 19,
+        "volume_smart_money": 15
+      },
+      "is_penny": false,
+      "rank": 30
+    }
+  ],
+  "penny_stocks": [
+    {
+      "symbol": "ROML",
+      "exchange": "NSE",
+      "ltp": 46.95,
+      "score": 64,
+      "summary": "This stock shows a very strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (57)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (13.2x average)"
+      ],
+      "category_scores": {
+        "pattern": 30,
+        "trend_momentum": 19,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 1
+    },
+    {
+      "symbol": "MIDSELIETF",
+      "exchange": "NSE",
+      "ltp": 19.08,
+      "score": 53,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (4.6x average)"
+      ],
+      "category_scores": {
+        "pattern": 24,
+        "trend_momentum": 14,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 2
+    },
+    {
+      "symbol": "SURANAT&P",
+      "exchange": "NSE",
+      "ltp": 19.35,
+      "score": 50,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (61)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (8.1x average)"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 19,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 3
+    },
+    {
+      "symbol": "INDTERRAIN",
+      "exchange": "NSE",
+      "ltp": 33.55,
+      "score": 50,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (58)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.0x average)"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 19,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 4
+    },
+    {
+      "symbol": "ATLANTAA",
+      "exchange": "NSE",
+      "ltp": 41.67,
+      "score": 45,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend.",
+      "reasons": [
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (52)",
+        "MACD bullish crossover (momentum turning up)",
+        "Volume confirms upward price move"
+      ],
+      "category_scores": {
+        "pattern": 14,
+        "trend_momentum": 26,
+        "volume_smart_money": 5
+      },
+      "is_penny": true,
+      "rank": 5
+    },
+    {
+      "symbol": "IRB",
+      "exchange": "NSE",
+      "ltp": 21.44,
+      "score": 45,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (54)",
+        "Quiet accumulation: OBV rising while price flat (smart-money buying)"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 19,
+        "volume_smart_money": 10
+      },
+      "is_penny": true,
+      "rank": 6
+    },
+    {
+      "symbol": "PRIMO",
+      "exchange": "NSE",
+      "ltp": 24.22,
+      "score": 44,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (54)",
+        "Strong trend in place (ADX 35)",
+        "Volume confirms upward price move"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 23,
+        "volume_smart_money": 5
+      },
+      "is_penny": true,
+      "rank": 7
+    },
+    {
+      "symbol": "PHARMABEES",
+      "exchange": "NSE",
+      "ltp": 25.09,
+      "score": 43,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and a healthy upward trend.",
+      "reasons": [
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (58)",
+        "Distribution warning: price up but OBV falling"
+      ],
+      "category_scores": {
+        "pattern": 30,
+        "trend_momentum": 19,
+        "volume_smart_money": -6
+      },
+      "is_penny": true,
+      "rank": 8
+    },
+    {
+      "symbol": "AGROPHOS",
+      "exchange": "NSE",
+      "ltp": 31.58,
+      "score": 43,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming.",
+      "reasons": [
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "RSI in healthy range (54)",
+        "Volume confirms upward price move"
+      ],
+      "category_scores": {
+        "pattern": 30,
+        "trend_momentum": 8,
+        "volume_smart_money": 5
+      },
+      "is_penny": true,
+      "rank": 9
+    },
+    {
+      "symbol": "AROGRANITE",
+      "exchange": "NSE",
+      "ltp": 26.67,
+      "score": 43,
+      "summary": "This stock shows a strong setup, mainly because of unusually high buying volume.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "RSI in healthy range (61)",
+        "Strong trend in place (ADX 28)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.5x average)"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 10
+    },
+    {
+      "symbol": "JISLDVREQS",
+      "exchange": "NSE",
+      "ltp": 24.83,
+      "score": 43,
+      "summary": "This stock shows a strong setup, mainly because of unusually high buying volume.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "RSI in healthy range (61)",
+        "Strong trend in place (ADX 26)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.3x average)"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 11
+    },
+    {
+      "symbol": "AHLADA",
+      "exchange": "NSE",
+      "ltp": 40.54,
+      "score": 42,
+      "summary": "This stock shows a strong setup, mainly because of a bullish chart pattern forming and unusually high buying volume.",
+      "reasons": [
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Morning star pattern (strong bullish reversal)",
+        "RSI in healthy range (47)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.7x average)"
+      ],
+      "category_scores": {
+        "pattern": 30,
+        "trend_momentum": -3,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 12
+    },
+    {
+      "symbol": "RPPL",
+      "exchange": "NSE",
+      "ltp": 19.3,
+      "score": 40,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (62)",
+        "Volume confirms upward price move"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 19,
+        "volume_smart_money": 5
+      },
+      "is_penny": true,
+      "rank": 13
+    },
+    {
+      "symbol": "BEARDSELL",
+      "exchange": "NSE",
+      "ltp": 29.44,
+      "score": 40,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (60)",
+        "Volume confirms upward price move"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 19,
+        "volume_smart_money": 5
+      },
+      "is_penny": true,
+      "rank": 14
+    },
+    {
+      "symbol": "JINDWORLD",
+      "exchange": "NSE",
+      "ltp": 32.44,
+      "score": 40,
+      "summary": "This stock shows a strong setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "MACD bullish crossover (momentum turning up)",
+        "Strong trend in place (ADX 33)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.5x average)"
       ],
       "category_scores": {
         "pattern": 0,
-        "trend_momentum": 6,
+        "trend_momentum": 25,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 15
+    },
+    {
+      "symbol": "SBC",
+      "exchange": "NSE",
+      "ltp": 43.59,
+      "score": 39,
+      "summary": "This stock shows a moderate setup, mainly because of unusually high buying volume.",
+      "reasons": [
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI overbought (81) - pullback risk",
+        "Strong trend in place (ADX 27)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (3.7x average)"
+      ],
+      "category_scores": {
+        "pattern": 12,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 16
+    },
+    {
+      "symbol": "HYBRIDFIN",
+      "exchange": "NSE",
+      "ltp": 25.69,
+      "score": 39,
+      "summary": "This stock shows a moderate setup, mainly because of unusually high buying volume.",
+      "reasons": [
+        "Breakout above 20-day high on strong volume",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI overbought (83) - pullback risk",
+        "Strong trend in place (ADX 40)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (26.7x average)"
+      ],
+      "category_scores": {
+        "pattern": 12,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 17
+    },
+    {
+      "symbol": "MSPL",
+      "exchange": "NSE",
+      "ltp": 44.32,
+      "score": 38,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "MACD bullish crossover (momentum turning up)",
+        "Volume confirms upward price move"
+      ],
+      "category_scores": {
+        "pattern": 12,
+        "trend_momentum": 21,
+        "volume_smart_money": 5
+      },
+      "is_penny": true,
+      "rank": 18
+    },
+    {
+      "symbol": "MONIFTY500",
+      "exchange": "NSE",
+      "ltp": 23.63,
+      "score": 38,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (62)",
+        "Strong trend in place (ADX 28)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.9x average)"
+      ],
+      "category_scores": {
+        "pattern": 0,
+        "trend_momentum": 23,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 19
+    },
+    {
+      "symbol": "MOHEALTH",
+      "exchange": "NSE",
+      "ltp": 48.32,
+      "score": 36,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (62)",
+        "Volume confirms upward price move"
+      ],
+      "category_scores": {
+        "pattern": 12,
+        "trend_momentum": 19,
+        "volume_smart_money": 5
+      },
+      "is_penny": true,
+      "rank": 20
+    },
+    {
+      "symbol": "CELEBRITY",
+      "exchange": "NSE",
+      "ltp": 7.97,
+      "score": 36,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Shooting star near recent high (bearish warning)",
+        "Price above EMA50 (short-term uptrend)",
+        "RSI in healthy range (59)",
+        "MACD bullish crossover (momentum turning up)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (4.8x average)"
+      ],
+      "category_scores": {
+        "pattern": 6,
+        "trend_momentum": 15,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 21
+    },
+    {
+      "symbol": "MOM30IETF",
+      "exchange": "NSE",
+      "ltp": 31.76,
+      "score": 35,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (61)",
+        "Distribution warning: price up but OBV falling",
+        "Unusual buying volume (4.6x average)"
+      ],
+      "category_scores": {
+        "pattern": 12,
+        "trend_momentum": 19,
+        "volume_smart_money": 4
+      },
+      "is_penny": true,
+      "rank": 22
+    },
+    {
+      "symbol": "DEN",
+      "exchange": "NSE",
+      "ltp": 33.08,
+      "score": 35,
+      "summary": "This stock shows a moderate setup, mainly because of unusually high buying volume.",
+      "reasons": [
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI overbought (77) - pullback risk",
+        "Strong trend in place (ADX 34)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (2.5x average)"
+      ],
+      "category_scores": {
+        "pattern": 8,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 23
+    },
+    {
+      "symbol": "ESAFSFB",
+      "exchange": "NSE",
+      "ltp": 36.33,
+      "score": 35,
+      "summary": "This stock shows a moderate setup, mainly because of unusually high buying volume.",
+      "reasons": [
+        "Breakout above 20-day high on strong volume",
+        "Price right at 60-day resistance (may struggle to break out)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI overbought (81) - pullback risk",
+        "Strong trend in place (ADX 32)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (12.6x average)"
+      ],
+      "category_scores": {
+        "pattern": 8,
+        "trend_momentum": 12,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 24
+    },
+    {
+      "symbol": "CONSUMER",
+      "exchange": "NSE",
+      "ltp": 11.43,
+      "score": 35,
+      "summary": "This stock shows a moderate setup based on overall technical signals.",
+      "reasons": [
+        "Morning star pattern (strong bullish reversal)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Volume confirms upward price move"
+      ],
+      "category_scores": {
+        "pattern": 16,
+        "trend_momentum": 14,
+        "volume_smart_money": 5
+      },
+      "is_penny": true,
+      "rank": 25
+    },
+    {
+      "symbol": "DAMODARIND",
+      "exchange": "NSE",
+      "ltp": 30.57,
+      "score": 33,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (52)",
+        "Strong trend in place (ADX 30)",
+        "Quiet accumulation: OBV rising while price flat (smart-money buying)"
+      ],
+      "category_scores": {
+        "pattern": 0,
+        "trend_momentum": 23,
+        "volume_smart_money": 10
+      },
+      "is_penny": true,
+      "rank": 26
+    },
+    {
+      "symbol": "PVTBANKADD",
+      "exchange": "NSE",
+      "ltp": 28.47,
+      "score": 33,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "Strong trend in place (ADX 36)",
+        "Volume confirms upward price move",
+        "Unusual buying volume (31.7x average)"
+      ],
+      "category_scores": {
+        "pattern": 0,
+        "trend_momentum": 18,
+        "volume_smart_money": 15
+      },
+      "is_penny": true,
+      "rank": 27
+    },
+    {
+      "symbol": "METALIETF",
+      "exchange": "NSE",
+      "ltp": 13.1,
+      "score": 33,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend.",
+      "reasons": [
+        "Bullish engulfing pattern (buyers overwhelmed sellers)",
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (49)"
+      ],
+      "category_scores": {
+        "pattern": 14,
+        "trend_momentum": 19,
         "volume_smart_money": 0
       },
+      "is_penny": true,
+      "rank": 28
+    },
+    {
+      "symbol": "DBSTOCKBRO",
+      "exchange": "NSE",
+      "ltp": 29.93,
+      "score": 33,
+      "summary": "This stock shows a moderate setup, mainly because of a healthy upward trend and unusually high buying volume.",
+      "reasons": [
+        "Price above EMA50 (short-term uptrend)",
+        "Price above EMA200 (long-term uptrend)",
+        "RSI in healthy range (47)",
+        "Strong trend in place (ADX 39)",
+        "Quiet accumulation: OBV rising while price flat (smart-money buying)"
+      ],
+      "category_scores": {
+        "pattern": 0,
+        "trend_momentum": 23,
+        "volume_smart_money": 10
+      },
+      "is_penny": true,
       "rank": 29
+    },
+    {
+      "symbol": "ASHIMASYN",
+      "exchange": "NSE",
+      "ltp": 15.85,
+      "score": 31,
+      "summary": "This stock shows a moderate setup, mainly because of unusually high buying volume.",
+      "reasons": [
+        "Hammer candle near recent support (bullish reversal signal)",
+        "RSI in healthy range (46)",
+        "Quiet accumulation: OBV rising while price flat (smart-money buying)",
+        "Unusual buying volume (2.4x average)"
+      ],
+      "category_scores": {
+        "pattern": 14,
+        "trend_momentum": -3,
+        "volume_smart_money": 20
+      },
+      "is_penny": true,
+      "rank": 30
     }
   ]
 }
