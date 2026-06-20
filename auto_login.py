@@ -19,11 +19,13 @@ def get_access_token():
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(login_url, wait_until="networkidle")
+        page.wait_for_timeout(1000)
 
-        # Step 1: user id + password, targeted by placeholder text
-        userid_field = page.get_by_placeholder(re.compile("User ID|Phone", re.IGNORECASE))
-        password_field = page.get_by_placeholder(re.compile("Password", re.IGNORECASE))
+        # Step 1: user id is the first text input, password is the password-type input
+        userid_field = page.locator('input[type="text"]').first
+        password_field = page.locator('input[type="password"]').first
 
+        userid_field.wait_for(state="visible", timeout=15000)
         userid_field.fill(KITE_USER_ID)
         password_field.fill(KITE_PASSWORD)
         page.screenshot(path="debug_2_filled.png")
@@ -33,7 +35,7 @@ def get_access_token():
         page.screenshot(path="debug_3_after_submit.png")
         print("URL after step 1 submit:", page.url)
 
-        # Step 2: TOTP page — find any visible empty text/number input
+        # Step 2: TOTP page
         page.wait_for_timeout(1500)
         all_inputs = page.query_selector_all("input")
         print(f"Found {len(all_inputs)} input fields on this page")
@@ -44,7 +46,7 @@ def get_access_token():
             if input_type in ("text", "number", "tel", "password") and inp.is_visible():
                 placeholder = (inp.get_attribute("placeholder") or "")
                 print(f"  candidate input: type={input_type} placeholder={placeholder}")
-                totp_field = inp  # keep last matching visible candidate
+                totp_field = inp
 
         if totp_field is None:
             page.screenshot(path="debug_4_no_totp_field.png")
