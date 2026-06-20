@@ -1,0 +1,38 @@
+name: Run Stock Screener
+
+on:
+  workflow_dispatch:
+    inputs:
+      request_token:
+        description: 'Paste the request_token from Kite login'
+        required: true
+
+jobs:
+  run-screener:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install kiteconnect pandas ta
+
+      - name: Run screener script
+        env:
+          KITE_API_KEY: ${{ secrets.KITE_API_KEY }}
+          KITE_API_SECRET: ${{ secrets.KITE_API_SECRET }}
+          REQUEST_TOKEN: ${{ github.event.inputs.request_token }}
+        run: python screener.py
+
+      - name: Commit updated results.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add results.json
+          git commit -m "Update results.json" || echo "No changes to commit"
+          git push
