@@ -19,6 +19,8 @@ SLEEP_BETWEEN_CALLS = 0.34
 TOP_N_PER_SECTION = 30
 PENNY_THRESHOLD = 50  # price-based proxy only — Kite has no real index membership data
 
+data_as_of_date = None  # set to the actual last trading day once we fetch real data
+
 # ---------- LOGIN ----------
 kite = KiteConnect(api_key=KITE_API_KEY)
 session_data = kite.generate_session(REQUEST_TOKEN, api_secret=KITE_API_SECRET)
@@ -239,6 +241,10 @@ for i, (symbol, token) in enumerate(symbol_to_token.items(), start=1):
         if df is None or not passes_sanity(df):
             continue
 
+        latest_candle_date = df.iloc[-1]["date"]
+        if data_as_of_date is None or latest_candle_date > data_as_of_date:
+            data_as_of_date = latest_candle_date
+
         pattern_score, pattern_reasons = detect_patterns(df)
         trend_score, trend_reasons = score_trend_momentum(df)
         volume_score, volume_reasons = score_volume(df)
@@ -290,6 +296,7 @@ for rank, r in enumerate(penny_section, start=1):
 
 output = {
     "generated_at": datetime.now().isoformat(),
+    "data_as_of": data_as_of_date.isoformat() if data_as_of_date is not None else None,
     "universe_size": total,
     "penny_threshold": PENNY_THRESHOLD,
     "nifty500_stocks": nifty_section,
