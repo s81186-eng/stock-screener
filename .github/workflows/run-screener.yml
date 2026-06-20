@@ -22,7 +22,7 @@ jobs:
           pip install kiteconnect pandas ta pyotp playwright
           playwright install --with-deps chromium
 
-     - name: Auto-login and get access token
+      - name: Auto-login and get access token
         env:
           KITE_API_KEY: ${{ secrets.KITE_API_KEY }}
           KITE_API_SECRET: ${{ secrets.KITE_API_SECRET }}
@@ -39,6 +39,7 @@ jobs:
           path: |
             debug_*.png
             debug_page_content.html
+            auto_login_output.log
           if-no-files-found: ignore
 
       - name: Run screener script
