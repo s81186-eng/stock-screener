@@ -12,7 +12,6 @@ from ta.volume import OnBalanceVolumeIndicator
 # ---------- CONFIG ----------
 KITE_API_KEY = os.environ["KITE_API_KEY"]
 KITE_API_SECRET = os.environ["KITE_API_SECRET"]
-REQUEST_TOKEN = os.environ["REQUEST_TOKEN"]
 
 LOOKBACK_DAYS = 300          # enough history for EMA200
 MAX_STOCKS = 100              # keep small at first to avoid rate limits; raise later
@@ -30,9 +29,7 @@ WATCHLIST = [
 
 # ---------- LOGIN ----------
 kite = KiteConnect(api_key=KITE_API_KEY)
-session_data = kite.generate_session(REQUEST_TOKEN, api_secret=KITE_API_SECRET)
-kite.set_access_token(session_data["access_token"])
-print("Logged in as:", kite.profile()["user_name"])
+kite.set_access_token(os.environ["ACCESS_TOKEN"])
 
 # ---------- GET INSTRUMENT TOKENS ----------
 instruments = kite.instruments("NSE")
