@@ -188,3 +188,248 @@
     font-size: 12.5px;
     color: var(--text-dim);
     cursor: pointer;
+    list-style: none;
+    font-weight: 600;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: " ▸"; }
+  details[open] summary::after { content: " ▾"; }
+
+  .reasons {
+    margin: 12px 0 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+  }
+  .reasons li {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .reasons li:last-child { border-bottom: none; }
+  .reasons li.warn { color: var(--warn); }
+  .reasons li.bad { color: var(--danger); }
+
+  .glossary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-top: 28px;
+  }
+  .glossary h3 { font-size: 15px; margin: 0 0 12px 0; font-weight: 700; }
+  .glossary dl { margin: 0; font-size: 13px; }
+  .glossary dt { font-weight: 700; color: var(--text); margin-top: 10px; }
+  .glossary dd { margin: 3px 0 0 0; color: var(--text-dim); line-height: 1.5; }
+  .glossary dt:first-child { margin-top: 0; }
+
+  footer {
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--text-faint);
+    margin-top: 30px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-row">
+    <h1>Stock Screener <span class="by">by Sarang</span></h1>
+  </div>
+  <div class="subtitle">NSE technical-analysis ranking · daily refresh</div>
+  <div class="meta-row" id="metaRow"><span class="dot"></span><span id="updated">Loading…</span></div>
+</header>
+
+<div class="container">
+  <div id="tokenSection"></div>
+  <div id="list" class="loading">Fetching results…</div>
+
+  <div class="glossary">
+    <h3>What the terms mean</h3>
+    <dl>
+      <dt>Score</dt>
+      <dd>0–90 scale combining chart patterns, trend strength, and volume signals. Higher means stronger short-term technical setup.</dd>
+      <dt>EMA50 / EMA200</dt>
+      <dd>Average price over the last 50 or 200 days. Price above these lines usually means the stock is in an uptrend.</dd>
+      <dt>Golden cross</dt>
+      <dd>When the EMA50 crosses above the EMA200 — a classic long-term bullish signal.</dd>
+      <dt>RSI</dt>
+      <dd>Measures whether a stock is overbought or oversold, on a scale of 0–100. Mid-range (40–65) is healthy; above 75 means stretched.</dd>
+      <dt>MACD crossover</dt>
+      <dd>A momentum signal. A bullish crossover often appears just as upward momentum is building.</dd>
+      <dt>ADX</dt>
+      <dd>Measures how strong the current trend is, regardless of direction. Above 25 means a real trend (not just choppy sideways action).</dd>
+      <dt>OBV (On-Balance Volume)</dt>
+      <dd>Tracks cumulative buying vs selling pressure. Rising OBV while price stays flat can mean quiet accumulation by big buyers.</dd>
+      <dt>Hammer / Engulfing / Morning star</dt>
+      <dd>Candlestick patterns that have historically appeared near short-term price bottoms — they signal a possible reversal upward.</dd>
+      <dt>Breakout</dt>
+      <dd>When price moves above a recent ceiling (like a 20-day high), especially on heavy volume, suggesting fresh upward momentum.</dd>
+      <dt>Penny stocks</dt>
+      <dd>Here, this just means price below ₹50 — a simple price cutoff, not an official classification, since real index/fundamental data isn't available from this data source.</dd>
+    </dl>
+  </div>
+
+  <footer>
+    Personal use only · Not investment advice · Technical signals only, no fundamentals<br>
+    Data via Zerodha Kite Connect
+  </footer>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const requestToken = params.get('request_token');
+
+  if (requestToken) {
+    document.getElementById('tokenSection').innerHTML = `
+      <div class="token-box">
+        <h2>Login token captured</h2>
+        <div class="token-value" id="tokenValue">${requestToken}</div>
+        <button class="copy-btn" onclick="copyToken()">Copy token</button>
+      </div>
+    `;
+  }
+
+  function copyToken() {
+    const text = document.getElementById('tokenValue').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Token copied. Paste it into GitHub Actions to refresh results.');
+    });
+  }
+
+  function classifyReason(text) {
+    const t = text.toLowerCase();
+    if (/warning|bearish|distribution|overbought|selling|struggle|crossover \(momentum turning down\)/.test(t)) return 'bad';
+    if (/risk|pullback|resistance/.test(t)) return 'warn';
+    return '';
+  }
+
+  function fillBar(value, max) {
+    const pct = Math.max(0, Math.min(100, (value / max) * 100));
+    let cls = '';
+    if (value < 0) cls = 'neg';
+    else if (value < max * 0.4) cls = 'low';
+    return { pct: value < 0 ? 100 : pct, cls };
+  }
+
+  function renderCard(stock) {
+    const cs = stock.category_scores || {};
+    const pBar = fillBar(cs.pattern || 0, 40);
+    const tBar = fillBar(cs.trend_momentum || 0, 30);
+    const vBar = fillBar(cs.volume_smart_money || 0, 20);
+
+    const reasonsHtml = (stock.reasons || []).map(r => {
+      const cls = classifyReason(r);
+      return `<li class="${cls}">${r}</li>`;
+    }).join('');
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="rank-symbol">
+          <span class="rank">#${stock.rank}</span>
+          <div class="symbol-block">
+            <div class="symbol">${stock.symbol}</div>
+            <div class="exchange-price">${stock.exchange} · ₹${stock.ltp.toLocaleString('en-IN')}</div>
+          </div>
+        </div>
+        <div class="score-pill">${stock.score}</div>
+      </div>
+      <div class="summary">${stock.summary || ''}</div>
+      <div class="breakdown">
+        <div class="bd-item">
+          <div class="bd-label">Pattern</div>
+          <div class="bd-bar"><div class="bd-fill ${pBar.cls}" style="width:${pBar.pct}%"></div></div>
+          <div class="bd-val">${cs.pattern ?? '—'}</div>
+        </div>
+        <div class="bd-item">
+          <div class="bd-label">Trend</div>
+          <div class="bd-bar"><div class="bd-fill ${tBar.cls}" style="width:${tBar.pct}%"></div></div>
+          <div class="bd-val">${cs.trend_momentum ?? '—'}</div>
+        </div>
+        <div class="bd-item">
+          <div class="bd-label">Volume</div>
+          <div class="bd-bar"><div class="bd-fill ${vBar.cls}" style="width:${vBar.pct}%"></div></div>
+          <div class="bd-val">${cs.volume_smart_money ?? '—'}</div>
+        </div>
+      </div>
+      <details>
+        <summary>Technical details</summary>
+        <ul class="reasons">${reasonsHtml}</ul>
+      </details>
+    `;
+    return card;
+  }
+
+  fetch('results.json?t=' + Date.now())
+    .then(res => res.json())
+    .then(data => {
+      const generated = new Date(data.generated_at);
+      const genDateStr = generated.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' });
+      const genTimeStr = generated.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+
+      let dataAsOfText = '';
+      if (data.data_as_of) {
+        const asOf = new Date(data.data_as_of);
+        const today = new Date();
+        const isSameDay = asOf.toDateString() === today.toDateString();
+        const asOfDateStr = asOf.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' });
+        dataAsOfText = isSameDay
+          ? `Data as of today's close`
+          : `Data as of ${asOfDateStr} (market closed since)`;
+      }
+
+      document.getElementById('updated').textContent =
+        `${dataAsOfText} · refreshed ${genDateStr} ${genTimeStr} · scanned ${data.universe_size || '—'} stocks`;
+
+      const list = document.getElementById('list');
+      list.className = '';
+      list.innerHTML = '';
+
+      const nifty = data.nifty500_stocks || [];
+      const penny = data.penny_stocks || [];
+
+      if (nifty.length === 0 && penny.length === 0) {
+        list.innerHTML = '<div class="loading">No stocks scored positively today.</div>';
+        return;
+      }
+
+      const niftyHeading = document.createElement('h2');
+      niftyHeading.className = 'section-heading';
+      niftyHeading.textContent = `Regular stocks (above ₹${data.penny_threshold || 50})`;
+      list.appendChild(niftyHeading);
+
+      if (nifty.length === 0) {
+        const none = document.createElement('div');
+        none.className = 'loading';
+        none.textContent = 'None scored positively today.';
+        list.appendChild(none);
+      } else {
+        nifty.forEach(stock => list.appendChild(renderCard(stock)));
+      }
+
+      const pennyHeading = document.createElement('h2');
+      pennyHeading.className = 'section-heading';
+      pennyHeading.textContent = `Penny stocks (below ₹${data.penny_threshold || 50})`;
+      list.appendChild(pennyHeading);
+
+      if (penny.length === 0) {
+        const none2 = document.createElement('div');
+        none2.className = 'loading';
+        none2.textContent = 'None scored positively today.';
+        list.appendChild(none2);
+      } else {
+        penny.forEach(stock => list.appendChild(renderCard(stock)));
+      }
+    })
+    .catch(err => {
+      document.getElementById('list').textContent = 'Failed to load results. Try refreshing.';
+      console.error(err);
+    });
+</script>
+
+</body>
+</html>
