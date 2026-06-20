@@ -11,18 +11,6 @@ KITE_PASSWORD = os.environ["KITE_PASSWORD"]
 KITE_TOTP_SECRET = os.environ["KITE_TOTP_SECRET"]
 
 
-def get_visible_inputs(page):
-    inputs = page.query_selector_all("input")
-    visible = []
-    for inp in inputs:
-        try:
-            if inp.is_visible():
-                visible.append(inp)
-        except Exception:
-            pass
-    return visible
-
-
 def get_access_token():
     kite = KiteConnect(api_key=KITE_API_KEY)
     login_url = kite.login_url()
@@ -33,32 +21,19 @@ def get_access_token():
         page.goto(login_url, wait_until="networkidle")
         page.wait_for_timeout(1500)
 
-        # Step 1: find visible inputs, fill userid (non-password) and password
-        visible_inputs = get_visible_inputs(page)
-        print(f"Step 1: found {len(visible_inputs)} visible inputs")
-        for i, inp in enumerate(visible_inputs):
-            print(f"  [{i}] type={inp.get_attribute('type')}")
+        # Step 1: type userid character-by-character (simulates real keystrokes)
+        userid_locator = page.locator('input:not([type="password"]):not([type="checkbox"])').first
+        password_locator = page.locator('input[type="password"]').first
 
-        userid_input = None
-        password_input = None
-        for inp in visible_inputs:
-            input_type = (inp.get_attribute("type") or "text").lower()
-            if input_type == "password" and password_input is None:
-                password_input = inp
-            elif input_type != "checkbox" and userid_input is None:
-                userid_input = inp
+        userid_locator.click()
+        userid_locator.press_sequentially(KITE_USER_ID, delay=80)
+        page.wait_for_timeout(300)
+        print("userid field value now:", userid_locator.input_value())
 
-        if userid_input is None or password_input is None:
-            page.screenshot(path="debug_2_fields_not_found.png")
-            raise Exception("Could not identify userid/password fields")
-
-        userid_input.click()
-        userid_input.fill(KITE_USER_ID)
-        password_input.click()
-        password_input.fill(KITE_PASSWORD)
-
-        print("userid field value now:", userid_input.input_value())
-        print("password field value now:", "*" * len(password_input.input_value()))
+        password_locator.click()
+        password_locator.press_sequentially(KITE_PASSWORD, delay=80)
+        page.wait_for_timeout(300)
+        print("password field length now:", len(password_locator.input_value()))
 
         page.screenshot(path="debug_2_filled.png")
 
@@ -69,25 +44,15 @@ def get_access_token():
 
         # Step 2: TOTP page
         page.wait_for_timeout(1500)
-        visible_inputs_2 = get_visible_inputs(page)
-        print(f"Step 2: found {len(visible_inputs_2)} visible inputs")
-
-        totp_field = None
-        for inp in visible_inputs_2:
-            input_type = (inp.get_attribute("type") or "text").lower()
-            if input_type != "checkbox":
-                totp_field = inp
-
-        if totp_field is None:
-            page.screenshot(path="debug_4_no_totp_field.png")
-            with open("debug_page_content.html", "w") as f:
-                f.write(page.content())
-            raise Exception("Could not find a TOTP input field")
-
+        totp_locator = page.locator('input:not([type="checkbox"])').first
         totp_code = pyotp.TOTP(KITE_TOTP_SECRET).now()
         print("Generated TOTP:", totp_code)
-        totp_field.click()
-        totp_field.fill(totp_code)
+
+        totp_locator.click()
+        totp_locator.press_sequentially(totp_code, delay=80)
+        page.wait_for_timeout(300)
+        print("totp field value now:", totp_locator.input_value())
+
         page.screenshot(path="debug_5_totp_filled.png")
         page.wait_for_timeout(2000)
 
@@ -114,5 +79,4 @@ def get_access_token():
 
 
 if __name__ == "__main__":
-    token = get_access_token()
-    print("ACCESS_TOKEN=" + token)
+    token
