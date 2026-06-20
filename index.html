@@ -12,15 +12,8 @@
     margin: 0;
     padding: 16px;
   }
-  h1 {
-    font-size: 20px;
-    margin-bottom: 4px;
-  }
-  .updated {
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 16px;
-  }
+  h1 { font-size: 20px; margin-bottom: 4px; }
+  .updated { font-size: 12px; color: #888; margin-bottom: 16px; }
   .card {
     background: #1a1d24;
     border-radius: 10px;
@@ -28,74 +21,101 @@
     margin-bottom: 12px;
     border-left: 4px solid #3ddc84;
   }
-  .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .symbol { font-size: 17px; font-weight: 600; }
+  .score { font-size: 17px; font-weight: 700; color: #3ddc84; }
+  .meta { font-size: 12px; color: #999; margin-top: 2px; }
+  ul { margin: 8px 0 0 0; padding-left: 18px; font-size: 13px; color: #cfcfcf; }
+  li { margin-bottom: 2px; }
+  .loading { color: #888; }
+
+  .token-box {
+    background: #1a1d24;
+    border: 2px solid #3ddc84;
+    border-radius: 10px;
+    padding: 16px;
+    margin-bottom: 20px;
   }
-  .symbol {
-    font-size: 17px;
-    font-weight: 600;
+  .token-box h2 { margin: 0 0 8px 0; font-size: 16px; }
+  .token-value {
+    font-family: monospace;
+    font-size: 14px;
+    background: #0f1115;
+    padding: 10px;
+    border-radius: 6px;
+    word-break: break-all;
+    margin-bottom: 10px;
   }
-  .score {
-    font-size: 17px;
+  .copy-btn {
+    background: #3ddc84;
+    color: #0f1115;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
     font-weight: 700;
-    color: #3ddc84;
-  }
-  .meta {
-    font-size: 12px;
-    color: #999;
-    margin-top: 2px;
-  }
-  ul {
-    margin: 8px 0 0 0;
-    padding-left: 18px;
-    font-size: 13px;
-    color: #cfcfcf;
-  }
-  li {
-    margin-bottom: 2px;
-  }
-  .loading {
-    color: #888;
+    font-size: 14px;
+    width: 100%;
   }
 </style>
 </head>
 <body>
+
+<div id="tokenSection"></div>
 
 <h1>📈 Stock Screener</h1>
 <div class="updated" id="updated">Loading...</div>
 <div id="list" class="loading">Fetching results...</div>
 
 <script>
-fetch('results.json?t=' + Date.now())
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('updated').textContent =
-      'Updated: ' + new Date(data.generated_at).toLocaleString();
+  // Check if a request_token is in the URL (from Kite login redirect)
+  const params = new URLSearchParams(window.location.search);
+  const requestToken = params.get('request_token');
 
-    const list = document.getElementById('list');
-    list.className = '';
-    list.innerHTML = '';
+  if (requestToken) {
+    const section = document.getElementById('tokenSection');
+    section.innerHTML = `
+      <div class="token-box">
+        <h2>🔑 Login Token</h2>
+        <div class="token-value" id="tokenValue">${requestToken}</div>
+        <button class="copy-btn" onclick="copyToken()">Copy Token</button>
+      </div>
+    `;
+  }
 
-    data.stocks.forEach(stock => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <div class="row">
-          <div class="symbol">#${stock.rank} ${stock.symbol}</div>
-          <div class="score">${stock.score}</div>
-        </div>
-        <div class="meta">${stock.exchange} • ₹${stock.ltp}</div>
-        <ul>${stock.reasons.map(r => `<li>${r}</li>`).join('')}</ul>
-      `;
-      list.appendChild(card);
+  function copyToken() {
+    const text = document.getElementById('tokenValue').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Copied! Now go to GitHub Actions and paste it.');
     });
-  })
-  .catch(err => {
-    document.getElementById('list').textContent = 'Failed to load results.json';
-    console.error(err);
-  });
+  }
+
+  // Load results.json as before
+  fetch('results.json?t=' + Date.now())
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('updated').textContent =
+        'Updated: ' + new Date(data.generated_at).toLocaleString();
+      const list = document.getElementById('list');
+      list.className = '';
+      list.innerHTML = '';
+      data.stocks.forEach(stock => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <div class="row">
+            <div class="symbol">#${stock.rank} ${stock.symbol}</div>
+            <div class="score">${stock.score}</div>
+          </div>
+          <div class="meta">${stock.exchange} • ₹${stock.ltp}</div>
+          <ul>${stock.reasons.map(r => `<li>${r}</li>`).join('')}</ul>
+        `;
+        list.appendChild(card);
+      });
+    })
+    .catch(err => {
+      document.getElementById('list').textContent = 'Failed to load results.json';
+      console.error(err);
+    });
 </script>
 
 </body>
