@@ -2,8 +2,10 @@ name: Run Stock Screener
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '30 3 * * 1-5'
+    inputs:
+      request_token:
+        description: 'Paste the request_token from Kite login'
+        required: true
 
 jobs:
   run-screener:
@@ -19,39 +21,13 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install kiteconnect pandas ta pyotp playwright
-          playwright install --with-deps chromium
-
-      - name: Auto-login and get access token
-        env:
-          KITE_API_KEY: ${{ secrets.KITE_API_KEY }}
-          KITE_API_SECRET: ${{ secrets.KITE_API_SECRET }}
-          KITE_USER_ID: ${{ secrets.KITE_USER_ID }}
-          KITE_PASSWORD: ${{ secrets.KITE_PASSWORD }}
-          KITE_TOTP_SECRET: ${{ secrets.KITE_TOTP_SECRET }}
-        run: |
-          python -u auto_login.py > auto_login_output.log 2>&1 || true
-          echo "----- FULL LOG -----"
-          cat auto_login_output.log
-          echo "---------------------"
-          grep "^ACCESS_TOKEN=" auto_login_output.log >> "$GITHUB_ENV" || (echo "Login failed — see log above" && exit 1)
-
-      - name: Upload debug screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug-screenshots
-          path: |
-            debug_*.png
-            debug_page_content.html
-            auto_login_output.log
-          if-no-files-found: ignore
+        run: pip install kiteconnect pandas ta
 
       - name: Run screener script
         env:
           KITE_API_KEY: ${{ secrets.KITE_API_KEY }}
           KITE_API_SECRET: ${{ secrets.KITE_API_SECRET }}
+          REQUEST_TOKEN: ${{ github.event.inputs.request_token }}
         run: python screener.py
 
       - name: Commit updated results.json
