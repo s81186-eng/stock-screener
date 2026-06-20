@@ -90,15 +90,109 @@
   }
 
   // Load results.json as before
+function renderCard(stock) {
+    const cs = stock.category_scores || {};
+    const pBar = fillBar(cs.pattern || 0, 40);
+    const tBar = fillBar(cs.trend_momentum || 0, 30);
+    const vBar = fillBar(cs.volume_smart_money || 0, 20);
+
+    const reasonsHtml = (stock.reasons || []).map(r => {
+      const cls = classifyReason(r);
+      return `<li class="${cls}">${r}</li>`;
+    }).join('');
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="rank-symbol">
+          <span class="rank">#${stock.rank}</span>
+          <div class="symbol-block">
+            <div class="symbol">${stock.symbol}</div>
+            <div class="exchange-price">${stock.exchange} · ₹${stock.ltp.toLocaleString('en-IN')}</div>
+          </div>
+        </div>
+        <div class="score-pill">${stock.score}</div>
+      </div>
+      <div class="summary">${stock.summary || ''}</div>
+      <div class="breakdown">
+        <div class="bd-item">
+          <div class="bd-label">Pattern</div>
+          <div class="bd-bar"><div class="bd-fill ${pBar.cls}" style="width:${pBar.pct}%"></div></div>
+          <div class="bd-val">${cs.pattern ?? '—'}</div>
+        </div>
+        <div class="bd-item">
+          <div class="bd-label">Trend</div>
+          <div class="bd-bar"><div class="bd-fill ${tBar.cls}" style="width:${tBar.pct}%"></div></div>
+          <div class="bd-val">${cs.trend_momentum ?? '—'}</div>
+        </div>
+        <div class="bd-item">
+          <div class="bd-label">Volume</div>
+          <div class="bd-bar"><div class="bd-fill ${vBar.cls}" style="width:${vBar.pct}%"></div></div>
+          <div class="bd-val">${cs.volume_smart_money ?? '—'}</div>
+        </div>
+      </div>
+      <details>
+        <summary>Technical details</summary>
+        <ul class="reasons">${reasonsHtml}</ul>
+      </details>
+    `;
+    return card;
+  }
+
   fetch('results.json?t=' + Date.now())
     .then(res => res.json())
     .then(data => {
+      const when = new Date(data.generated_at);
+      const dateStr = when.toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short' });
+      const timeStr = when.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
       document.getElementById('updated').textContent =
-        'Updated: ' + new Date(data.generated_at).toLocaleString();
+        `Updated ${dateStr}, ${timeStr} · scanned ${data.universe_size || '—'} stocks`;
+
       const list = document.getElementById('list');
       list.className = '';
       list.innerHTML = '';
-      data.stocks.forEach(stock => {
+
+      const nifty = data.nifty500_stocks || [];
+      const penny = data.penny_stocks || [];
+
+      if (nifty.length === 0 && penny.length === 0) {
+        list.innerHTML = '<div class="loading">No stocks scored positively today.</div>';
+        return;
+      }
+
+      const niftyHeading = document.createElement('h2');
+      niftyHeading.className = 'section-heading';
+      niftyHeading.textContent = `Regular stocks (above ₹${data.penny_threshold || 50})`;
+      list.appendChild(niftyHeading);
+
+      if (nifty.length === 0) {
+        list.innerHTML += '<div class="loading">None scored positively today.</div>';
+      } else {
+        nifty.forEach(stock => list.appendChild(renderCard(stock)));
+      }
+
+      const pennyHeading = document.createElement('h2');
+      pennyHeading.className = 'section-heading';
+      pennyHeading.textContent = `Penny stocks (below ₹${data.penny_threshold || 50})`;
+      list.appendChild(pennyHeading);
+
+      if (penny.length === 0) {
+        const none = document.createElement('div');
+        none.className = 'loading';
+        none.textContent = 'None scored positively today.';
+        list.appendChild(none);
+      } else {
+        penny.forEach(stock => list.appendChild(renderCard(stock)));
+      }
+    })
+    .catch(err => {
+      document.getElementById('list').textContent = 'Failed to load results. Try refreshing.';
+      console.error(err);
+    });
+
+  data.stocks_UNUSED = [];
+  function unused_old(stock) {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
