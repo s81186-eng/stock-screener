@@ -79,4 +79,5 @@ def get_access_token():
 
 
 if __name__ == "__main__":
-    token
+    token = get_access_token()
+    print("ACCESS_TOKEN=" + token)
