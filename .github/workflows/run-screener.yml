@@ -2,10 +2,8 @@ name: Run Stock Screener
 
 on:
   workflow_dispatch:
-    inputs:
-      request_token:
-        description: 'Paste the request_token from Kite login'
-        required: true
+  schedule:
+    - cron: '30 3 * * 1-5'   # 9:00 AM IST, Mon-Fri (cron runs in UTC)
 
 jobs:
   run-screener:
@@ -20,13 +18,23 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install kiteconnect pandas ta
+        run: |
+          pip install kiteconnect pandas ta pyotp playwright
+          playwright install --with-deps chromium
+
+      - name: Auto-login and get access token
+        env:
+          KITE_API_KEY: ${{ secrets.KITE_API_KEY }}
+          KITE_API_SECRET: ${{ secrets.KITE_API_SECRET }}
+          KITE_USER_ID: ${{ secrets.KITE_USER_ID }}
+          KITE_PASSWORD: ${{ secrets.KITE_PASSWORD }}
+          KITE_TOTP_SECRET: ${{ secrets.KITE_TOTP_SECRET }}
+        run: python auto_login.py >> $GITHUB_ENV
 
       - name: Run screener script
         env:
           KITE_API_KEY: ${{ secrets.KITE_API_KEY }}
           KITE_API_SECRET: ${{ secrets.KITE_API_SECRET }}
-          REQUEST_TOKEN: ${{ github.event.inputs.request_token }}
         run: python screener.py
 
       - name: Commit updated results.json
