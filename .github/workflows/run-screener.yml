@@ -29,7 +29,12 @@ jobs:
           KITE_USER_ID: ${{ secrets.KITE_USER_ID }}
           KITE_PASSWORD: ${{ secrets.KITE_PASSWORD }}
           KITE_TOTP_SECRET: ${{ secrets.KITE_TOTP_SECRET }}
-        run: python auto_login.py | tee auto_login_output.log | grep "^ACCESS_TOKEN=" >> $GITHUB_ENV
+        run: |
+          python -u auto_login.py > auto_login_output.log 2>&1 || true
+          echo "----- FULL LOG -----"
+          cat auto_login_output.log
+          echo "---------------------"
+          grep "^ACCESS_TOKEN=" auto_login_output.log >> "$GITHUB_ENV" || (echo "Login failed — see log above" && exit 1)
 
       - name: Upload debug screenshots
         if: always()
